@@ -3,9 +3,9 @@ import { MockBackend, MockConnection } from "@angular/http/testing";
 
 export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
   // array in local storage for registered users
-  let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+  const users: any[] = JSON.parse(localStorage.getItem('users')) || [];
   // fake token
-  let token: string = 'fake-jwt-token';
+  const token: string = 'fake-jwt-token';
 
   // configure fake backend
   backend.connections.subscribe((connection: MockConnection) => {
@@ -15,10 +15,10 @@ export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOpt
       // authenticate
       if (connection.request.url.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
         // get parameters from post request
-        let params = JSON.parse(connection.request.getBody());
+        const params = JSON.parse(connection.request.getBody());
 
         // find if any user matches login credentials
-        let filteredUsers = users.filter(user => {
+        const filteredUsers = users.filter(user => {
           return user.email === params.email && user.password === params.password;
         });
 

@@ -2,7 +2,7 @@ export class LoginCustom {
 
   static handleSignInFormSubmit() {
     $('#m_login_signin_submit').click(function(e) {
-      let form = $(this).closest('form');
+      const form = $(this).closest('form');
       form.validate({
         rules: {
           email: {
@@ -22,7 +22,7 @@ export class LoginCustom {
   }
 
   static displaySignUpForm() {
-    let login = $('#m_login');
+    const login = $('#m_login');
     login.removeClass('m-login--forget-password');
     login.removeClass('m-login--signin');
 
@@ -31,7 +31,7 @@ export class LoginCustom {
   }
 
   static displaySignInForm() {
-    let login = $('#m_login');
+    const login = $('#m_login');
     login.removeClass('m-login--forget-password');
     login.removeClass('m-login--signup');
     try {
@@ -44,7 +44,7 @@ export class LoginCustom {
   }
 
   static displayForgetPasswordForm() {
-    let login = $('#m_login');
+    const login = $('#m_login');
     login.removeClass('m-login--signin');
     login.removeClass('m-login--signup');
 
@@ -76,8 +76,8 @@ export class LoginCustom {
 
   static handleSignUpFormSubmit() {
     $('#m_login_signup_submit').click(function(e) {
-      let btn = $(this);
-      let form = $(this).closest('form');
+      const btn = $(this);
+      const form = $(this).closest('form');
       form.validate({
         rules: {
           fullname: {
@@ -107,8 +107,8 @@ export class LoginCustom {
 
   static handleForgetPasswordFormSubmit() {
     $('#m_login_forget_password_submit').click(function(e) {
-      let btn = $(this);
-      let form = $(this).closest('form');
+      const btn = $(this);
+      const form = $(this).closest('form');
       form.validate({
         rules: {
           email: {

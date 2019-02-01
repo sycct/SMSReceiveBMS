@@ -10,7 +10,7 @@ import { Helpers } from "../helpers";
 
 @Component({
   selector: ".m-grid.m-grid--hor.m-grid--root.m-page",
-  templateUrl: './templates/login-1.component.html',
+  templateUrl: './templates/login.component.html',
   encapsulation: ViewEncapsulation.None
 })
 
