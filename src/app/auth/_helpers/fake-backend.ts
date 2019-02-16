@@ -1,6 +1,6 @@
 import {BaseRequestOptions, Http, RequestMethod, RequestOptions, Response, ResponseOptions, XHRBackend} from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
+import {map} from 'rxjs/operator/map';
 
 export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
   // array in local storage for registered users
@@ -89,44 +89,36 @@ export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOpt
       }
 
       // create user
-      if (connection.request.url.endsWith('http://localhost:5000/api/Account') && connection.request.method === RequestMethod.Post) {
-        // get new user object from post body
-        let newUser = JSON.parse(connection.request.getBody());
-        console.log(newUser);
+      if (connection.request.url.endsWith('http://localhost:5000/api/Account')) {
+        if (connection.request.method === RequestMethod.Post) {
+          // get new user object from post body
+          let newUser = JSON.parse(connection.request.getBody());
 
-        // create user
-        this.httpClient.post('http://localhost:5000/api/Account/Register',
-          {
-            newUser
-          })
-          .subscribe(
-            data => {
-              console.log('POST Request is successful ', data);
-            },
-            error => {
+          // validation
+          let duplicateUser = users.filter(user => {
+            return user.email === newUser.email;
+          }).length;
+          if (duplicateUser) {
+            return connection.mockError(new Error('Email "' + newUser.email + '" is already registered'));
+          }
 
-              console.log('Error', error);
+          // save new user
+          let body = JSON.stringify(newUser);
+          let headers = new Headers({'Content-Type': 'application/json'});
+          let options = new RequestOptions({headers: headers});
+          Http.post(connection.request.url, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
 
-            }
-          );
+          newUser.id = users.length + 1;
+          users.push(newUser);
+          localStorage.setItem('users', JSON.stringify(users));
 
-        // validation
-        let duplicateUser = users.filter(user => {
-          return user.email === newUser.email;
-        }).length;
-        if (duplicateUser) {
-          return connection.mockError(new Error('Email "' + newUser.email + '" is already registered'));
+          // respond 200 OK
+          connection.mockRespond(new Response(new ResponseOptions({status: 200})));
+
+          return;
         }
-
-        // save new user
-        newUser.id = users.length + 1;
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // respond 200 OK
-        connection.mockRespond(new Response(new ResponseOptions({status: 200})));
-
-        return;
       }
 
       // delete user
