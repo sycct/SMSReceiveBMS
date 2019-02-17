@@ -1,6 +1,7 @@
 import {BaseRequestOptions, Http, RequestMethod, RequestOptions, Response, ResponseOptions, XHRBackend} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {map} from 'rxjs/operator/map';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
   // array in local storage for registered users
@@ -103,13 +104,6 @@ export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOpt
           }
 
           // save new user
-          let body = JSON.stringify(newUser);
-          let headers = new Headers({'Content-Type': 'application/json'});
-          let options = new RequestOptions({headers: headers});
-          Http.post(connection.request.url, body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-
           newUser.id = users.length + 1;
           users.push(newUser);
           localStorage.setItem('users', JSON.stringify(users));

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response } from "@angular/http";
+import { Headers, Http, RequestOptions, Response,Jsonp,URLSearchParams } from "@angular/http";
 
 import { User } from "../_models/index";
 
@@ -25,7 +25,7 @@ export class UserService {
   }
 
   create(user: User) {
-    return this.http.post('http://localhost:5000/api/Account', user, this.jwt()).map((response: Response) => response.json());
+    return this.http.post('http://localhost:5000/api/Account/Register', user, this.jwt()).map((response: Response) => response.json());
   }
 
   update(user: User) {

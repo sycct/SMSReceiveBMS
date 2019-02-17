@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { BaseRequestOptions, HttpModule } from "@angular/http";
 import { MockBackend } from "@angular/http/testing";
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthRoutingModule } from "./auth-routing.routing";
 import { AuthComponent } from "./auth.component";
@@ -26,6 +26,7 @@ import { fakeBackendProvider } from "./_helpers/index";
     FormsModule,
     HttpModule,
     AuthRoutingModule,
+    HttpClientModule
   ],
   providers: [
     AuthGuard,
@@ -33,7 +34,7 @@ import { fakeBackendProvider } from "./_helpers/index";
     AuthenticationService,
     UserService,
     // api backend simulation
-    fakeBackendProvider,
+    // fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
   ],
