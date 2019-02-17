@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response,Jsonp,URLSearchParams } from "@angular/http";
+import { Headers, Http, RequestOptions, Response } from "@angular/http";
 
 import { User } from "../_models/index";
 
