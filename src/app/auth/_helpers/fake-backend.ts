@@ -1,7 +1,5 @@
 import {BaseRequestOptions, Http, RequestMethod, RequestOptions, Response, ResponseOptions, XHRBackend} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
-import {map} from 'rxjs/operator/map';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 export function mockBackEndFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
   // array in local storage for registered users

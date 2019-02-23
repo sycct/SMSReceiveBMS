@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { Helpers } from "./helpers";
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Router, NavigationStart, NavigationEnd} from '@angular/router';
+import {Helpers} from './helpers';
 
 @Component({
   selector: 'body',
