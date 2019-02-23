@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Observable, BehaviorSubject, interval, timer } from 'rxjs';
+import {HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {Observable, BehaviorSubject, interval, timer} from 'rxjs';
 
-import { OAuthService } from 'angular-oauth2-oidc';
+import {OAuthService} from 'angular-oauth2-oidc';
 
-import { User } from '../_models/user';
+import {User} from '../_models/user';
 
 @Injectable()
 export class AuthenticationService {
@@ -15,12 +15,13 @@ export class AuthenticationService {
 
   constructor(
     private http: Http,
-  private router: Router,
-  private oAuthService: OAuthService
-  ) {}
+    private router: Router,
+    private oAuthService: OAuthService
+  ) {
+  }
 
   login(email: string, password: string) {
-    return this.http.post('/api/authenticate', JSON.stringify({ email: email, password: password }))
+    return this.http.post('/api/authenticate', JSON.stringify({email: email, password: password}))
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let user = response.json();
