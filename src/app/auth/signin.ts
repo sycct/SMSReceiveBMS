@@ -26,7 +26,7 @@ export class Signin implements OnInit {
     protected router: Router,
     protected oAuthService: OAuthService,
     protected _script: ScriptLoaderService,
-    protected _userService: UserService,
+    // protected _userService: UserService,
     protected _alert: AlertService,
     protected _route: ActivatedRoute,
     protected cfr: ComponentFactoryResolver,

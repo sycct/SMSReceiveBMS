@@ -29,10 +29,10 @@ import { fakeBackendProvider } from './_helpers/index';
     HttpClientModule
   ],
   providers: [
-    AuthGuard,
+    // AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService,
+    // UserService,
     // api backend simulation
     // fakeBackendProvider,
     MockBackend,

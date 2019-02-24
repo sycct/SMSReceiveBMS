@@ -30,11 +30,11 @@ export class AuthComponent extends Signin {
     protected router: Router,
     protected oAuthService: OAuthService,
     protected _script: ScriptLoaderService,
-    protected _userService: UserService,
+    // protected _userService: UserService,
     protected _alert: AlertService,
     protected _route: ActivatedRoute,
     protected cfr: ComponentFactoryResolver,
     protected authenticationService: AuthenticationService) {
-    super(router, oAuthService,  _script, _userService, _alert, _route, cfr, authenticationService);
+    super(router, oAuthService,  _script,  _alert, _route, cfr, authenticationService);
   }
 }

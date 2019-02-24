@@ -1,7 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Headers, Http, RequestOptions, Response } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
-import { User } from "../_models/index";
+import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
