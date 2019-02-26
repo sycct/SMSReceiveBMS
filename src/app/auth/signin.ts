@@ -46,7 +46,7 @@ export class Signin implements OnInit {
         // If no redirect has been set, uses the default.
         const redirect: string = this.authenticationService.redirectUrl
           ? this.authenticationService.redirectUrl
-          : '/';
+          : '/home';
         // Redirects the user.
         this.router.navigate([redirect]);
       })
