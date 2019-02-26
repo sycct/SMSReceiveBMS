@@ -35,7 +35,7 @@ export class Signin implements OnInit {
 
   signin(): void {
     this.oAuthService
-      .fetchTokenUsingPasswordFlowAndLoadUserProfile(this.model.username, this.model.password)
+      .fetchTokenUsingPasswordFlowAndLoadUserProfile(this.model.email, this.model.password)
       .then(() => {
         this.authenticationService.init();
 
@@ -81,8 +81,8 @@ export class Signin implements OnInit {
 
   showAlert(target) {
     this[target].clear();
-    let factory = this.cfr.resolveComponentFactory(AlertComponent);
-    let ref = this[target].createComponent(factory);
+    const factory = this.cfr.resolveComponentFactory(AlertComponent);
+    const ref = this[target].createComponent(factory);
     ref.changeDetectorRef.detectChanges();
   }
 
