@@ -40,7 +40,7 @@ export class ThemeComponent implements OnInit {
         (<any>mUtil).init();
         Helpers.setLoading(false);
         // content m-wrapper animation
-        let animation = 'm-animate-fade-in-up';
+        const animation = 'm-animate-fade-in-up';
         $('.m-wrapper').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
           $('.m-wrapper').removeClass(animation);
         }).removeClass(animation).addClass(animation);
